@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "@deno/testing/asserts": "https://deno.land/std@0.116.0/testing/asserts.ts",
+    "nanocolors": "https://deno.land/x/nanocolors@0.1.12/mod.ts"
+  }
+}

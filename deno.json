@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "checkJs": false,
+    "experimentalDecorators": true,
+    "lib": ["deno.window"],
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": true,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true
+  },
+  "lint": {
+    "files": {
+      "include": ["src/"],
+      "exclude": []
+    },
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo"],
+      "exclude": []
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src/"],
+      "exclude": []
+    },
+    "options": {
+      "indentWidth": 4,
+      "lineWidth": 120,
+      "proseWrap": "preserve",
+      "singleQuote": true,
+      "useTabs": false
+    }
+  }
+}
