@@ -1,0 +1,29 @@
+# ignore all "dot" files and folders by default
+.*
+.**/
+
+# whitelist desired "dot" folders
+!/.github/
+!/.vscode/
+
+# whitelist desired "dot" files
+!.editorconfig
+!.gitattributes
+!.gitignore
+!.gitkeep
+
+#excluded directories
+.coverage/
+dist/
+node_modules/
+
+# competing package manager lock files
+package-lock.json
+
+# package manager debug files
+lerna-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.DS_Store
