@@ -1,3 +1,5 @@
+import { DEPTH_MEASUREMENTS } from './input.ts';
+
 /**
  * Convenience helper type
  */
@@ -103,3 +105,9 @@ function toSlidingWindows(array: number[], size = 1): SlidingWindow[] {
 
   return sets;
 }
+
+const partOneAnswer: number = countIncreases(DEPTH_MEASUREMENTS);
+console.log('ANSWER DAY 1 | PART ONE:', partOneAnswer);
+
+const partTwoAnswer: number = countIncreasesWithSlidingWindow(DEPTH_MEASUREMENTS, 3);
+console.log('ANSWER DAY 1 | PART TWO:', partTwoAnswer);

@@ -1,6 +1,6 @@
 import { assertEquals } from '@deno/testing/asserts';
 
-import { countIncreases, countIncreasesWithSlidingWindow } from '../utils.ts';
+import { countIncreases, countIncreasesWithSlidingWindow } from '../main.ts';
 
 const EXAMPLE_INPUT: number[] = [
   199,
@@ -15,12 +15,12 @@ const EXAMPLE_INPUT: number[] = [
   263,
 ];
 
-Deno.test('should correctly identify the number of times  increases', () => {
+Deno.test('should correctly identify the number of times increases', () => {
   const increases = countIncreases(EXAMPLE_INPUT);
   assertEquals(increases, 7);
 });
 
-Deno.test('should correctly identify the number of times  increases with a sliding window', () => {
+Deno.test('should correctly identify the number of times increases with a sliding window', () => {
   const increases = countIncreasesWithSlidingWindow(EXAMPLE_INPUT, 3);
   assertEquals(increases, 5);
 });
