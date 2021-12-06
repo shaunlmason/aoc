@@ -14,19 +14,37 @@ export function determinePowerConsumption(diagnostics: string[]): number {
   const gamma = determineGammaRate(diagnostics);
   const epsilon = determineEpsilonRate(diagnostics);
 
-  console.log(`g: => ${gamma} | e: => ${epsilon}`);
-
   return gamma * epsilon;
 }
 
 /**
- * Determines the subs power consumption.
+ * Determines the subs life support rating
  *
  * @param diagnostics incoming diagnostic report, which is a series of binary numbers
  * @returns correct power consumption, in decimal
  */
-export function determinePowerConsumptionWithExtra(diagnostics: string[]): number {
-  return determinePowerConsumption(diagnostics);
+export function determineLifeSupportRating(diagnostics: string[]): number {
+  const scrubberRating = determineCO2ScrubberRating(diagnostics);
+  const generatorRating = determineOxygenGeneratorRating(diagnostics);
+
+  return scrubberRating * generatorRating;
+}
+
+/**
+ * Determines the C02 scrubber rating.
+ *
+ * @param diagnostics incoming diagnostic report, which is a series of binary numbers
+ * @returns C02 scrubber rating, in decimal
+ */
+function determineCO2ScrubberRating(diagnostics: string[]): number {
+  if (diagnostics.length === 0) {
+    return 0;
+  }
+
+  const filtered = filterByLeastCommonBit(diagnostics, 0);
+  const answer = parseInt(filtered[0], 2);
+
+  return answer;
 }
 
 /**
@@ -94,7 +112,7 @@ function determineLeastCommonBit(array: string[], position: number): number {
   const ones = bits.filter((bit: number) => bit === 1).length;
   const zeros = bits.filter((bit: number) => bit === 0).length;
 
-  return (zeros >= ones) ? 1 : 0;
+  return (zeros <= ones) ? 0 : 1;
 }
 
 /**
@@ -112,9 +130,46 @@ function determineMostCommonBit(array: string[], position: number): number {
   const ones = bits.filter((bit: number) => bit === 1).length;
   const zeros = bits.filter((bit: number) => bit === 0).length;
 
-  // console.log(`bits: ${bits} | ones: ${ones} | zeros: ${zeros}`);
+  return (ones >= zeros) ? 1 : 0;
+}
 
-  return (ones > zeros) ? 1 : 0;
+/**
+ * Determines the oxygen generator rating.
+ *
+ * @param diagnostics incoming diagnostic report, which is a series of binary numbers
+ * @returns oxygen generator rating, in decimal
+ */
+function determineOxygenGeneratorRating(diagnostics: string[]): number {
+  if (diagnostics.length === 0) {
+    return 0;
+  }
+
+  const filtered = filterByMostCommonBit(diagnostics, 0);
+  const answer = parseInt(filtered[0], 2);
+
+  return answer;
+}
+
+function filterByLeastCommonBit(incoming: string[], position: number): string[] {
+  const lcb = determineLeastCommonBit(incoming, position);
+  const filtered = incoming.filter((value: string) => value[position] === lcb.toString());
+
+  if (filtered.length === 1) {
+    return filtered;
+  } else {
+    return filterByLeastCommonBit(filtered, position += 1);
+  }
+}
+
+function filterByMostCommonBit(incoming: string[], position: number): string[] {
+  const mcb = determineMostCommonBit(incoming, position);
+  const filtered = incoming.filter((value: string) => value[position] === mcb.toString());
+
+  if (filtered.length === 1) {
+    return filtered;
+  } else {
+    return filterByMostCommonBit(filtered, position += 1);
+  }
 }
 
 /**
@@ -134,5 +189,5 @@ function getBitAtPosition(value: string, position: number): number {
 const partOneAnswer = determinePowerConsumption(DIAGNOSTIC_REPORT);
 console.log('ANSWER DAY 3 | PART 1:', partOneAnswer);
 
-// const partTwoAnswer = determinePowerConsumptionWithExtra(DIAGNOSTIC_REPORT);
-// console.log('ANSWER DAY 3 | PART 2:', partTwoAnswer);
+const partTwoAnswer = determineLifeSupportRating(DIAGNOSTIC_REPORT);
+console.log('ANSWER DAY 3 | PART 2:', partTwoAnswer);
