@@ -1,8 +1,5 @@
 import { INSTRUCTIONS } from './input.ts';
-
-type CurrentPosition = { aim: number; depth: number; horizontalPosition: number };
-type Direction = 'up' | 'down' | 'forward';
-type Instruction = { direction: Direction; value: number };
+import { CurrentPosition, Direction, Instruction } from './types.ts';
 
 /**
  * Determines current position based on incoming instructions.

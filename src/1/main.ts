@@ -1,9 +1,5 @@
 import { DEPTH_MEASUREMENTS } from './input.ts';
-
-/**
- * Convenience helper type
- */
-type SlidingWindow = number[];
+import { SlidingWindow } from './types.ts';
 
 /**
  * Scans incoming array and counts the number of times the array value increases.
