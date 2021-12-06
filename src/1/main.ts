@@ -107,7 +107,7 @@ function toSlidingWindows(array: number[], size = 1): SlidingWindow[] {
 }
 
 const partOneAnswer: number = countIncreases(DEPTH_MEASUREMENTS);
-console.log('ANSWER DAY 1 | PART ONE:', partOneAnswer);
+console.log('ANSWER DAY 1 | PART 1:', partOneAnswer);
 
 const partTwoAnswer: number = countIncreasesWithSlidingWindow(DEPTH_MEASUREMENTS, 3);
-console.log('ANSWER DAY 1 | PART TWO:', partTwoAnswer);
+console.log('ANSWER DAY 1 | PART 2:', partTwoAnswer);

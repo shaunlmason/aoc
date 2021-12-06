@@ -1,3 +1,16 @@
+export const EXAMPLE_INPUT: number[] = [
+  199,
+  200,
+  208,
+  210,
+  200,
+  207,
+  240,
+  269,
+  260,
+  263,
+];
+
 export const DEPTH_MEASUREMENTS: number[] = [
   157,
   148,

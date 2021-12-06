@@ -104,7 +104,7 @@ function toInstruction(input: string): Instruction {
 }
 
 const partOneAnswer: CurrentPosition = determineCurrentPosition(INSTRUCTIONS);
-console.log('ANSWER DAY 2 | PART ONE:', partOneAnswer.horizontalPosition * partOneAnswer.depth);
+console.log('ANSWER DAY 2 | PART 1:', partOneAnswer.horizontalPosition * partOneAnswer.depth);
 
 const partTwoAnswer: CurrentPosition = determineCurrentPositionWithAim(INSTRUCTIONS);
-console.log('ANSWER DAY 2 | PART TWO:', partTwoAnswer.horizontalPosition * partTwoAnswer.depth);
+console.log('ANSWER DAY 2 | PART 2:', partTwoAnswer.horizontalPosition * partTwoAnswer.depth);

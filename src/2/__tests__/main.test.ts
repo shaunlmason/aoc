@@ -1,17 +1,9 @@
 import { assertEquals } from '@deno/testing/asserts';
 
+import { EXAMPLE_INPUT } from '../input.ts';
 import { determineCurrentPosition, determineCurrentPositionWithAim } from '../main.ts';
 
-export const EXAMPLE_INPUT: string[] = [
-  `forward 5`,
-  `down 5`,
-  `forward 8`,
-  `up 3`,
-  `down 8`,
-  `forward 2`,
-];
-
-Deno.test('should correctly determine position based on the incoming instructions', () => {
+Deno.test('D2P1 | should correctly determine position based on the incoming instructions', () => {
   const currentPosition = determineCurrentPosition(EXAMPLE_INPUT);
   const product = currentPosition.horizontalPosition * currentPosition.depth;
 
@@ -20,7 +12,7 @@ Deno.test('should correctly determine position based on the incoming instruction
   assertEquals(product, 150);
 });
 
-Deno.test('should correctly determine position (with aim), based on the incoming instructions', () => {
+Deno.test('D2P2 | should correctly determine position (with aim), based on the incoming instructions', () => {
   const currentPosition = determineCurrentPositionWithAim(EXAMPLE_INPUT);
   const product = currentPosition.horizontalPosition * currentPosition.depth;
 
